@@ -1,6 +1,6 @@
-#Alumnos: 
+# Alumnos:
 #       Arrate Esteve, Claudia;
-#       González Montero, Sergio; 
+#       González Montero, Sergio;
 #       Martín Martín, Víctor;
 #       Miori Gutiérrez, Alberto;
 #       Olmedo Moreno, Juan Cristóbal;
@@ -18,37 +18,38 @@ import time
 import math
 
 
-def gcd_binario_nuevo(x,y):
+def gcd_binario_nuevo(x, y):
     n = len(x)
     m = len(y)
-    xespar = x[0]%2 == 0
-    yespar = y[0]%2 == 0
-    
-    if x[n-1]==0:
-        t=y
-    elif y[m-1]==0:
-        t=x
-    elif xespar && yespar:
-        t=mul2(gcd_binario_nuevo(div2(x),div2(y)))
+    xespar = x[0] % 2 == 0
+    yespar = y[0] % 2 == 0
+
+    if x[n-1] == 0:
+        t = y
+    elif y[m-1] == 0:
+        t = x
+    elif xespar and yespar:
+        t = mul2(gcd_binario_nuevo(div2(x), div2(y)))
     elif xespar:
-        t=gcd_binario_nuevo(x/2,y)
+        t = gcd_binario_nuevo(x/2, y)
     elif yespar:
-        t=gcd_binario_nuevo(x,y/2)
-    elif n>m:
-        t=gcd_binario_nuevo(x,div2(x-y))
+        t = gcd_binario_nuevo(x, y/2)
+    elif n > m:
+        t = gcd_binario_nuevo(x, div2(x-y))
     else:
-        t=gcd_binario_nuevo(x,div2(x-y))
+        t = gcd_binario_nuevo(x, div2(x-y))
     return t
 
 
 def mul2(x):
     c = 0                               # Acarreo
     doble_x = []
-    
+
     for digito in x:
         doble = digito * 2 + c          # El doble más el acarreo
-        doble_x.append(doble % 10)      # Añadimos la cifra en el lugar correspondiente
-        c = doble // 10                 
+        # Añadimos la cifra en el lugar correspondiente
+        doble_x.append(doble % 10)
+        c = doble // 10
 
     while c > 0:
         doble = digito * 2 + c
@@ -56,6 +57,7 @@ def mul2(x):
         c //= 10
 
     return doble_x
+
 
 num_aleat = [random.randint(0, 9) for _ in range(10000)]
 
@@ -66,14 +68,17 @@ fin = time.time()
 tiempo_ejecucion = fin - inicio
 print(f"Tiempo de ejecución de mul2: {tiempo_ejecucion} segundos \n")
 
+
 def div2(x):
     c = 0                                              # Acarreo
     mitad_x = []
-    
+
     for digito in x:
-        mitad = math.floor(digito *(1/2) + c)          # La mitad más el acarreo
-        mitad_x.append(mitad % 10)                     # Añadimos la cifra en el lugar correspondiente
-        c = mitad // 10                 
+        # La mitad más el acarreo
+        mitad = math.floor(digito * (1/2) + c)
+        # Añadimos la cifra en el lugar correspondiente
+        mitad_x.append(mitad % 10)
+        c = mitad // 10
 
     while c > 0:
         mitad = math.floor(digito * (1/2) + c)
@@ -81,7 +86,7 @@ def div2(x):
         c //= 10
 
     return mitad_x
-        
+
 # Complejidad en tiempo
 inicio = time.time()
 resultado = div2(num_aleat)
