@@ -4,6 +4,8 @@
 #       Miori Gutiérrez, Alberto;
 #       Olmedo Moreno, Juan Cristóbal;
 
+# Esto es un cambio hecho por JCris
+
 # Problema 3.7. Reimplementar el algoritmo gcd binario(x,y) del programa gcds.py
 # del tema #2 para x, y ≥ 0 representados por listas de d´ıgitos (reducidas) y
 # demostrar que su complejidad es O(n2), donde n = len(x)+len(y).
