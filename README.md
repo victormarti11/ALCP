@@ -14,6 +14,6 @@ con la representación de listas de dígitos.
 Se espera que las funciones puedan manejar valores de len(x+y) hasta 10000.
 
 ## Tareas:
-* [x] mul2()
-* [x] div2()
-* [ ] gcd_binario_lst()
+* [x] mul2( )
+* [x] div2( )
+* [ ] gcd_binario_lst( )
