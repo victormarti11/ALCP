@@ -114,7 +114,7 @@ def test():
     limit = 1000
     equal = True
     count = 1
-    print("Test ha comenzado con límite {limit}")
+    print(f"Test ha comenzado con límite {limit}")
     while equal:
         num_aleat = [random.randint(0, 9) for _ in range(10000)]        # Lista aleatoria de longitud 10000
         num_aleat = remover_ceros(num_aleat)                            # Se convierte a lista reducida
