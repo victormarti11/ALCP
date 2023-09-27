@@ -15,5 +15,5 @@ Se espera que las funciones puedan manejar valores de len(x+y) hasta 10000.
 
 ## Tareas:
 * [x] mul2()
-* [ ] div2()
+* [x] div2()
 * [ ] gcd_binario_lst()
