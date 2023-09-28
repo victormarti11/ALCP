@@ -1,7 +1,6 @@
 # ALCP
-## Entrega 3
 
-## Enunciado: 
+## Entrega 3
 Problema 3.7. Reimplementar el algoritmo gcd_binario(x,y) del programa gcds.py del tema #2
 para x, y ≥ 0 representados por listas de dígitos (reducidas) y demostrar que su complejidad es O(n2)
 donde n = len(x)+len(y). Parte del ejercicio consiste en implementar la función mul2(x) que calcule
