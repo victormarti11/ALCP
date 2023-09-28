@@ -18,7 +18,7 @@ import time
 
 def gcd_binario_tail_rec_lst(x,y):    # (x,y) != (0,0)
     m = [1]
-    while x != [] and y != []:      # x e y distintos de 0
+    while x != [] and y != [] and x_mayor_que_y(x, y) != 0:      # x e y distintos de 0
         if x[-1] < 0:
             x[-1] *= -1
         if y[-1] < 0:
@@ -45,9 +45,11 @@ def gcd_binario_tail_rec_lst(x,y):    # (x,y) != (0,0)
     if x == []:                    # caso base: gcd(0,y)=y
         #print("Caso base 1")
         m = multiplicar_karatsuba(m, y)
-    else:                         # caso base: gcd(x,0)=x
+    elif y == []:                         # caso base: gcd(x,0)=x
         #print("caso base 2")
         m = multiplicar_karatsuba(m, x)
+    else:
+        m = x
     return m
 
 def multiplicar_karatsuba(a, b):
@@ -213,7 +215,7 @@ def x_mayor_que_y(x,y):                                 # Decide si x es mayor q
             if x[i] > y[i]:
                 return 1
             elif x[i] < y[i]:
-                return 0
+                return -1
             else:                                       # Son iguales hasta la última posición
                 i -= 1
                 if i == 0 and x[0] == y[0]:
@@ -227,14 +229,25 @@ def remover_ceros(a):                                                   # De lis
     del a[n:]
     return a
 
-x = [random.randint(0, 9) for _ in range(10000)]
-y = [random.randint(0, 9) for _ in range(10000)]
+def lst2num(l):                                                         # Transforma una lista en un n√∫mero entero
+    exp = 0                                                             # Ej: [1,2,3] --> 321
+    result = 0
+    for i in l:
+        result += i*10**exp
+        exp += 1
+    return result
+
+x = [random.randint(0, 9) for _ in range(1000)]
+y = [random.randint(0, 9) for _ in range(10000-len(x))]
 x = remover_ceros(x)
 y = remover_ceros(y)
-
+x_1 = lst2num(x)
+y_1 = lst2num(y)
+gdc_1 = lst2num(gcd_binario_tail_rec_lst(x, y))
 # Complejidad en tiempo
 inicio = time.time()
 resultado = gcd_binario_tail_rec_lst(x, y)
 fin = time.time()
 tiempo_ejecucion = fin - inicio
+print({x_1},{y_1},{gdc_1})
 print(f"Tiempo de ejecución de test: {tiempo_ejecucion/60} minutos \n") 
