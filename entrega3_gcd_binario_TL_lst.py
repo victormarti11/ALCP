@@ -1,16 +1,16 @@
 #       Arrate Esteve, Claudia;
-#       González Montero, Sergio;
-#       Martín Martín, Víctor;
-#       Miori Gutiérrez, Alberto;
-#       Olmedo Moreno, Juan Cristóbal;
+#       Gonz√°lez Montero, Sergio;
+#       Mart√≠n Mart√≠n, V√≠ctor;
+#       Miori Guti√©rrez, Alberto;
+#       Olmedo Moreno, Juan Crist√≥bal;
 
 # Problema 3.7. Reimplementar el algoritmo gcd binario(x,y) del programa gcds.py
-# del tema #2 para x, y ≥ 0 representados por listas de d´ıgitos (reducidas) y
+# del tema #2 para x, y ‚â• 0 representados por listas de d¬¥ƒ±gitos (reducidas) y
 # demostrar que su complejidad es O(n2), donde n = len(x)+len(y).
-# Parte del ejercicio consiste en implementar la función mul2(x) que calcule
-# el doble de un entero x ≥ 0.
-# También se deben implementar las funciónes auxiliares mul2(x) y div2(x) que
-# calculen el doble y la mitad de x, con la representación de listas de dígitos.
+# Parte del ejercicio consiste en implementar la funci√≥n mul2(x) que calcule
+# el doble de un entero x ‚â• 0.
+# Tambi√©n se deben implementar las funci√≥nes auxiliares mul2(x) y div2(x) que
+# calculen el doble y la mitad de x, con la representaci√≥n de listas de d√≠gitos.
 # Se espera que las funciones puedan manejar valores de len(x+y) hasta 10000.
 
 import random
@@ -27,7 +27,7 @@ def gcd_binario_tail_rec_lst(x,y):    # (x,y) != (0,0)
         yespar = y[0]%2 == 0
         if xespar and yespar:
             #print("If 1")
-            m = mul2(m)               # aquí acumulamos las potencias de 2
+            m = mul2(m)               # aqu√≠ acumulamos las potencias de 2
             x = div2(x)
             y = div2(y)
         elif xespar:
@@ -39,13 +39,17 @@ def gcd_binario_tail_rec_lst(x,y):    # (x,y) != (0,0)
         elif x_mayor_que_y(x, y) == 1:
             #print("elif 3")
             x = div2(restar(x,y))
-        else:
-            #print("else")
+        elif x_mayor_que_y(x, y) == -1:
+            #print("elif 4")
             y = div2(restar(y,x))
+        else:
+            #print("x e y iguales")
+            m = x
+            break
     if x == []:                    # caso base: gcd(0,y)=y
         #print("Caso base 1")
         m = multiplicar_karatsuba(m, y)
-    else:                         # caso base: gcd(x,0)=x
+    elif y == []:                         # caso base: gcd(x,0)=x
         #print("caso base 2")
         m = multiplicar_karatsuba(m, x)
     return m
@@ -92,7 +96,7 @@ def multiplicar_karatsuba(a, b):
     return prod
 
 def multiplicar(a, b):
-    # a, b son listas de dÃ­gitos "reducidas"
+    # a, b son listas de d√É¬≠gitos "reducidas"
     n = len(a)
     m = len(b)
     c = [0] * (n + m)
@@ -107,11 +111,11 @@ def multiplicar(a, b):
     return c
 
 def sumar(a, b):
-    # a, b son listas de dÃ­gitos "reducidas"
+    # a, b son listas de d√É¬≠gitos "reducidas"
     n = len(a)
     m = len(b)
 
-    # Nos aseguramos de que a sea el mÃ¡s largo
+    # Nos aseguramos de que a sea el m√É¬°s largo
     if n < m:
         b, a = a, b
         n, m = m, n
@@ -132,22 +136,22 @@ def sumar(a, b):
         x //= 10
         i += 1
 
-    c[n] = x  # guardamos el Ãºltimo acarreo
+    c[n] = x  # guardamos el √É¬∫ltimo acarreo
 
     return c
 
 def mul2(x):
     # print("He entrado a mul2")
-    # print(f"El número es {x}")
+    # print(f"El n√∫mero es {x}")
     c = 0                                               # Acarreo
-    doble_x = []                                        # Lista vacía para almacenar el resultado
+    doble_x = []                                        # Lista vac√≠a para almacenar el resultado
     
     for digito in x:
-        doble = digito * 2 + c                          # Multiplicamos el dígito por 2 y sumamos el acarreo
+        doble = digito * 2 + c                          # Multiplicamos el d√≠gito por 2 y sumamos el acarreo
         doble_x.append(doble % 10)                      # Agregamos al final de la lista la cifra de las unidades
-        c = doble // 10                                 # Actualizamos el acarreo para el siguiente dígito
+        c = doble // 10                                 # Actualizamos el acarreo para el siguiente d√≠gito
         
-    if c > 0:                                           # Si aún hay un acarreo pendiente
+    if c > 0:                                           # Si a√∫n hay un acarreo pendiente
         doble_x.append(c)                               # Agregamos al final de la lista la cifra correspondiente
 
     return doble_x
@@ -160,7 +164,7 @@ def div2(a):
     if a == []:
         return []
     while i >= 0:
-        y = 10*x + a[i] # x es el resto, y el número a dividir
+        y = 10*x + a[i] # x es el resto, y el n√∫mero a dividir
         q[i] = y//2
         x = y%2
         i -= 1
@@ -170,12 +174,12 @@ def div2(a):
 
 def restar(a, b):
     # print(f"He entrado a restar {a} - {b}")
-    # a, b son listas de dí­gitos "reducidas"
+    # a, b son listas de d√≠¬≠gitos "reducidas"
     n = len(a)
     m = len(b)
 
-    # # si se nos asegura que la función es llamada con a >= b, las
-    # # siguientes dos líneas son innecesarias
+    # # si se nos asegura que la funci√≥n es llamada con a >= b, las
+    # # siguientes dos l√≠neas son innecesarias
     # if n < m:
     #     return
 
@@ -209,32 +213,47 @@ def x_mayor_que_y(x,y):                                 # Decide si x es mayor q
     elif n < m:
         return -1
     elif n == m:                                        # A igualdad de longitudes compara
-        while i >= 0:                                   # la cifra más significativa
+        while i >= 0:                                   # la cifra m√°s significativa
             if x[i] > y[i]:
                 return 1
             elif x[i] < y[i]:
-                return 0
-            else:                                       # Son iguales hasta la última posición
+                return -1
+            else:                                       # Son iguales hasta la √∫ltima posici√≥n
                 i -= 1
                 if i == 0 and x[0] == y[0]:
                     return 0
 
 def remover_ceros(a):                                                   # De lista a lista reducida
-    # a = lista de dí­gitos decimales                                    # Ej: [1,2,3,0] --> [1,2,3]
+    # a = lista de d√≠¬≠gitos decimales                                    # Ej: [1,2,3,0] --> [1,2,3]
     n = len(a)
     while n >= 1 and a[n - 1] == 0:
         n -= 1
     del a[n:]
     return a
 
+def lst2num(l):                                                         # Transforma una lista en un n‚àö‚à´mero entero
+    exp = 0                                                             # Ej: [1,2,3] --> 321
+    result = 0
+    for i in l:
+        result += i*10**exp
+        exp += 1
+    return result
+
 x = [random.randint(0, 9) for _ in range(10000)]
 y = [random.randint(0, 9) for _ in range(10000)]
 x = remover_ceros(x)
 y = remover_ceros(y)
-
+x_1 = lst2num(x)
+y_1 = lst2num(y)
+gdc_1 = lst2num(gcd_binario_tail_rec_lst(x, y))
 # Complejidad en tiempo
 inicio = time.time()
 resultado = gcd_binario_tail_rec_lst(x, y)
 fin = time.time()
 tiempo_ejecucion = fin - inicio
-print(f"Tiempo de ejecución de test: {tiempo_ejecucion/60} minutos \n") 
+
+if x_1 > y_1:
+    print(x_1 % y_1 == 0,f"Caso 1, {gdc_1}")
+else:
+    print(y_1 % x_1 == 0,f"Caso 2, {gdc_1}")
+print(f"Tiempo de ejecuci√≥n de test: {tiempo_ejecucion/60} minutos \n") 
