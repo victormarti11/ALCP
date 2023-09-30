@@ -1,5 +1,7 @@
 # ALCP
 ## Entrega 3
+## ANUNCIO: Entrega3.py listo para entregar en campus virtual
+
 
 ## Enunciado: 
 Problema 3.7. Reimplementar el algoritmo gcd_binario(x,y) del programa gcds.py del tema #2
@@ -15,5 +17,5 @@ Se espera que las funciones puedan manejar valores de len(x+y) hasta 10000.
 
 ## Tareas:
 * [x] mul2()
-* [ ] div2()
-* [ ] gcd_binario_lst()
+* [x] div2()
+* [x] gcd_binario_lst()
