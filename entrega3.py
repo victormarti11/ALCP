@@ -4,34 +4,35 @@
 #       Miori Gutiérrez, Alberto;
 #       Olmedo Moreno, Juan Cristóbal;
 
-def gcd_binario(x,y):       # (x,y) != (0,0)
+def gcd_binario(x,y):                       # (x,y) != (0,0)
     m = [1]
-    while x != [] and y != []:# x e y distintos de 0
+    while x != [] and y != []:              # x e y distintos de 0
         if x[-1] < 0:
             x[-1] *= -1
         if y[-1] < 0:
             y[-1] *= -1
-        xespar = x[0]%2 == 0            # Comprobamos paridad
+        xespar = x[0]%2 == 0                # Comprobamos paridad
         yespar = y[0]%2 == 0
         if xespar and yespar:
-            m = mul2(m)                  # aquí acumulamos las potencias de 2
+            m = mul2(m)                     # Aquí acumulamos las potencias de 2
             x = div2(x)
             y = div2(y)
-        elif xespar:
+        elif xespar:                        
             x = div2(x)
         elif yespar:
             y = div2(y)
-        elif x_mayor_que_y(x, y) == 1:   # x es mayor que y
+        elif x_mayor_que_y(x, y) == 1:      # x es mayor que y
             x = div2(restar(x,y))
-        else:                            # x es menor o igual que y
+        else:                               # x es menor o igual que y
             y = div2(restar(y,x))
-    if x == []:                          # Caso base: gcd(0,y)=y
+    if x == []:                             # Caso base: gcd(0,y)=y
         m = multiplicar_karatsuba(m, y)
-    elif y == []:                        # Caso base: gcd(x,0)=x
+    elif y == []:                           # Caso base: gcd(x,0)=x
         m = multiplicar_karatsuba(m, x)
     return m
 
-def multiplicar_karatsuba(a, b):         # Algoritmo de multiplicar de Karatsuba visto en clase
+
+def multiplicar_karatsuba(a, b):            # Algoritmo de multiplicar de Karatsuba visto en clase
     n = len(a)
     m = len(b)
     
@@ -72,13 +73,14 @@ def multiplicar_karatsuba(a, b):         # Algoritmo de multiplicar de Karatsuba
     remover_ceros(prod)
     return prod
 
-def multiplicar(a, b):  # a, b son listas de dígitos "reducidas"
+
+def multiplicar(a, b):                      # a, b son listas de dígitos "reducidas"
     n = len(a)
     m = len(b)
     c = [0] * (n + m)
-    for i in range(n):      # i = 0, 1, ..., n - 1
+    for i in range(n):                      # i = 0, 1, ..., n - 1
         x = 0
-        for j in range(m):  # j = 0, 1, ..., m - 1
+        for j in range(m):                  # j = 0, 1, ..., m - 1
             x = c[i + j] + a[i] * b[j] + x
             c[i + j] = x % 10
             x //= 10
@@ -86,33 +88,34 @@ def multiplicar(a, b):  # a, b son listas de dígitos "reducidas"
     remover_ceros(c)
     return c
 
-def sumar(a, b):       # a, b son listas de dígitos "reducidas"
+
+def sumar(a, b):                            # a, b son listas de dígitos "reducidas"
     n = len(a)
     m = len(b)
 
-    if n < m:          # Nos aseguramos de que a sea el más largo
+    if n < m:                               # Nos aseguramos de que a sea el más largo
         b, a = a, b
         n, m = m, n
 
-    c = [0] * (n + 1)  # reservamos espacio suficiente para la suma
-    x = 0              # x es el acarreo, que inicialmente es 0
+    c = [0] * (n + 1)                       # reservamos espacio suficiente para la suma
+    x = 0                                   # x es el acarreo, que inicialmente es 0
     i = 0
 
-    while i < m:       # i = 0, 1, ..., m - 1
+    while i < m:                            # i = 0, 1, ..., m - 1
         x = a[i] + b[i] + x
         c[i] = x % 10
         x //= 10
         i += 1
 
-    while i < n:       # i = m, m + 1, ..., n - 1
+    while i < n:                            # i = m, m + 1, ..., n - 1
         x = a[i] + x
         c[i] = x % 10
         x //= 10
         i += 1
 
-    c[n] = x           # guardamos el último acarreo
-
+    c[n] = x                                # guardamos el último acarreo
     return c
+
 
 def mul2(x):
     c = 0                             # Acarreo
@@ -127,6 +130,7 @@ def mul2(x):
         doble_x.append(c)             # Agregamos al final de la lista la cifra correspondiente
 
     return doble_x
+
 
 def div2(a):
     n = len(a)
@@ -144,27 +148,21 @@ def div2(a):
         del q[n-1]
     return q
 
+
 def restar(a, b):   # a, b son listas de dígitos "reducidas"
     n = len(a)
     m = len(b)
 
-    # # si se nos asegura que la funci√≥n es llamada con a >= b, las
-    # # siguientes dos l√≠neas son innecesarias
-    # if n < m:
-    #     return
-
-    c = [0] * n  # crear c = lista de n ceros
-    x = 0  # inicializar el acarreo x a cero
+    c = [0] * n                                 # Crear lista de n ceros
+    x = 0                                       # Inicializar el acarreo x a cero
     i = 0
-    while i < m:  # i=0, 1, ..., m - 1
-        # print(f"Estoy en restar; i = {i}; m = {m}")
-        # print(f"a = {a}; b = {b}\n")
+    while i < m:                                # i = 0, 1, ..., m - 1
         x = a[i] - b[i] + x
         c[i] = x % 10
         x //= 10
         i += 1
 
-    while i < n:  # i = m, m + 1, ..., n - 1
+    while i < n:                                # i = m, m + 1, ..., n - 1
         x = a[i] + x
         c[i] = x % 10
         x //= 10
@@ -172,6 +170,7 @@ def restar(a, b):   # a, b son listas de dígitos "reducidas"
 
     remover_ceros(c)
     return c
+
 
 def x_mayor_que_y(x,y):                           # Decide si x es mayor que y
     n, m = len(x), len(y)
@@ -191,8 +190,9 @@ def x_mayor_que_y(x,y):                           # Decide si x es mayor que y
                 if i == 0 and x[0] == y[0]:       # Son iguales dígito a dígito, luego x == y
                     return 0
 
-def remover_ceros(a):                  # Dada una lista que representa un número                                                                              
-    n = len(a)                         # elimina los 0 innecesarios de la lista
+
+def remover_ceros(a):                   # Dada una lista que representa un número                                                                              
+    n = len(a)                          # elimina los 0 innecesarios de la lista
     while n >= 1 and a[n - 1] == 0:
         n -= 1
     del a[n:]
