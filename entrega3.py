@@ -6,12 +6,12 @@
 
 def gcd_binario(x,y):       # (x,y) != (0,0)
     m = [1]
-    while x != [] and y != []:           # x e y distintos de 0
+    while x != [] and y != []:# x e y distintos de 0
         if x[-1] < 0:
             x[-1] *= -1
         if y[-1] < 0:
             y[-1] *= -1
-        xespar = x[0]%2 == 0
+        xespar = x[0]%2 == 0            # Comprobamos paridad
         yespar = y[0]%2 == 0
         if xespar and yespar:
             m = mul2(m)                  # aquí acumulamos las potencias de 2
