@@ -14,7 +14,7 @@ Nota 2: Se pueden incluir código para crear los certificados L1 y L2, o bien, g
 
 Nota 3: Evidentemente, es imposible construir un certificado válido de un número compuesto, pero es no implica que la función es_certificado_valido(N,L) no será invocado con N compuesto o con L una lista inválida. La función debe comprobar la consistencia del certificado L con el valor de N y devolver True o False.
 
-###Correo de Martín:
+### Correo de Martín:
 Hola Victor,
 
 Debes comprobar que L cumple todo lo pedido, es decir,
