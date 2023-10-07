@@ -2,7 +2,7 @@
 ## Práctica 4:
 Un certificado sucinto de primalidad de un entero N≥2 es una lista L=certificado(N) tal que:
 Si N es un primo entre 2 y 100 (inclusive), entonces L=["caso1",N].
-Si N es mayor que 100 y $N−1=p_1^{a_1}⋯p_r^{a_r}$, con $p_1<p_2<⋯<p_r$ primos distintos y los $a_i \geq 1$, entonces 
+Si N es mayor que 100 y $N−1=p_1^{a_1}⋯p_r^{a_r}$, con $p_1 < p_2 < ... < p_r$ primos distintos y los $a_i \geq 1$, entonces 
 $$L=["caso2",N,[p_1,a_1,certificado(p_1),x_1],...,[p_r,a_r,certificado(p_r),x_r]]$$
 donde $1 \leq x_i < N, x_i^{N−1} \equiv 1 (mod N)$ y $x_i^{(N−1)/p_i}≢ 1(mod N)$.
 
