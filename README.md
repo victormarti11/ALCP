@@ -4,7 +4,7 @@ Un certificado sucinto de primalidad de un entero N≥2 es una lista L=certifica
 Si N es un primo entre 2 y 100 (inclusive), entonces L=["caso1",N].
 Si N es mayor que 100 y $N−1=p_1^{a_1}⋯p_r^{a_r}$, con $p_1<p_2<⋯<p_r$ primos distintos y los $a_i≥1$, entonces 
 $$L=["caso2",N,[p_1,a_1,certificado(p_1),x_1],...,[p_r,a_r,certificado(p_r),x_r]]$$
-donde $1≤x_i<N, x_i^{N−1}≡1(modN) y x_i^{(N−1)/p_i}≢ 1(modN)$.
+donde $1 \leq x_i < N, x_i^{N−1} \equiv 1 (mod N) y x_i^{(N−1)/p_i}≢ 1(mod N)$.
 
 Implementar en Python3 la función es_certificado_valido(N,L) que dado un entero N≥2 y una lista L, determine si L es un certificado sucinto de primalidad de N. Todo el código debe estar en el fichero entrega4.py. La función debe comprobar que L tiene el formato correcto y que se cumplen todas las condiciones. Notar que por el teorema de Lucas, solo los primos N≥2 pueden tener un certificado válido. El código tiene que definir también dos variables globales L1 y L2 que tengan certificados sucintos de primalidad de 3⋅2^189+1 y 1477!+1, respectivamente. Fecha límite: 15/oct/2023, 23:59.
 
