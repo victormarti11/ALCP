@@ -31,7 +31,8 @@ de los certificados L.
 
 Saludos,
 Martín.
-------------------------------------------------------------------
+
+
 Hola Juan,
 
 Las cadenas de caracteres "caso1" y "caso2" van sin espacios.
