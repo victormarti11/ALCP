@@ -31,3 +31,17 @@ de los certificados L.
 
 Saludos,
 Martín.
+------------------------------------------------------------------
+Hola Juan,
+
+Las cadenas de caracteres "caso1" y "caso2" van sin espacios.
+
+Los certificados de la forma ["caso1", N] son válidos si y solo
+si N es un primo 2<=N<=100.
+
+Los certificados de la forma ["caso2", N, ...] son válidos si
+y solo si se cumplen todas las condiciones requeridas en el
+enunciado y esto implica que N es primo por el teorema de Lucas.
+
+Saludos,
+Martin.
