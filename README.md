@@ -12,4 +12,4 @@ Implementar la función sqrt_mod(a, p, n) que calcule una solución de $x2≡a(m
 sqrt_mod(3, 28091881, 1) -> 20378105 
 sqrt_mod(3, 28091881, 4) -> 185205998304326718269046083598 
 sqrt_mod(167042, 17, 7) -> 180047 
-sqrt_mod(250563, 17, 5) -> None  
+sqrt_mod(250563, 17, 5) -> None 
