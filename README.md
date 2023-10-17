@@ -7,6 +7,7 @@ Implementar la función sqrt_mod(a, p, n) que calcule una solución de $x2≡a(m
 
 
 <strong>Casos de prueba: </strong> 
+
 [sqrt_mod(a, 17, 1) for a in range(17)] -> [0, 1, 6, None, 15, None, None, None, 5, 14, None, None, None, 9, None, 7, 4] 
 sqrt_mod(3, 28091881, 1) -> 20378105 
 sqrt_mod(3, 28091881, 4) -> 185205998304326718269046083598 
