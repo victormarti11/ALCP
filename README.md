@@ -1,7 +1,7 @@
 # ALCP: Entrega 5
 ## Práctica 5:
 Implementar la función sqrt_mod(a, p, n) que calcule una solución de $x2≡a(mod p^n)$
- donde p es un primo impar, $n\geq1y$ $0\leqa<p^n$
+ donde p es un primo impar, $n \geq 1$ y $0 \leq a< p^n$
 . La solución devuelva debe estar en el intervalo $[0,p^{n−1}]$
 . En caso de que la ecuación no tenga solución, la función debe devolver None. La implementación debe estar en el fichero entrega5.py e incluir todas las funciones auxiliares utilizadas. Fecha límite: 29/oct/2023, 23:59.
 
